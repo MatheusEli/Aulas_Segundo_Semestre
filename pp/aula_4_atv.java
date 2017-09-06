@@ -7,10 +7,6 @@ package aulastring;
 
 import java.util.Scanner;
 
-/**
- *
- * @author lab804
- */
 public class AulaString {
 
     /**
