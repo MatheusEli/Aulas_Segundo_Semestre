@@ -1,0 +1,112 @@
+/*
+ MAIN
+ */
+package orientacaoaoobjeto;
+
+/**
+ MAIN
+ */
+public class OrientacaoAoObjeto {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    
+    AlunoNatacao a = new AlunoNatacao();
+    
+    a.nome = "Matheus";
+    a.sexo = 'm';
+    a.peso = 69.7;
+    a.altura = 1.65;
+    
+    a.apresentar();
+    
+    
+        
+    
+    
+    }
+    
+}
+
+
+
+
+
+
+/*
+Classe AlunoNatacao
+ */
+package orientacaoaoobjeto;
+
+/**
+ *
+ * @author Matheus
+ */
+public class AlunoNatacao {
+ 
+    String nome;
+    char sexo;
+    double peso;
+    double altura;
+    double pesoideal;
+    boolean ideal;
+    
+    
+    public String pesoIdeal(boolean ideal, char sexo, double pesoideal, double peso){
+    
+        if(sexo == 'm'  ||   sexo == 'M'){
+        
+            pesoideal = (72.7*altura)-58;
+            if(peso > pesoideal){
+            
+                return ("Está maior que o ideal");
+            }else{
+            
+                if(peso < pesoideal){
+                
+                    return("Está menor que o ideal");
+                }
+            }
+            
+            if(peso == pesoideal){
+            
+                return("Peso Ideal!!");
+            }
+        }
+        
+        if(sexo == 'f'  ||   sexo == 'F'){
+        
+            pesoideal = (62.1*altura) - 44.7;
+            
+            if(peso>pesoideal){
+            
+                return ("Está maior que o ideal");
+                
+            }else{
+            
+                if(peso < pesoideal){
+                
+                    return("Está menor que o ideal");
+                }
+
+        }
+            if(peso == pesoideal){
+            
+                return("Peso Ideal!!");
+            }
+        }
+        return("Dígitos Inválidos");
+    }
+        
+    public void apresentar(){
+    
+        System.out.println("Nome do Aluno: "+nome);
+        System.out.println("Peso do Aluno: "+peso);
+        System.out.println("Altura do Aluno: "+altura);
+        System.out.println("O aluno esta no peso Ideal?: "+pesoIdeal(ideal, sexo, pesoideal, peso));
+    }
+    
+}
