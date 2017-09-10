@@ -1,0 +1,94 @@
+/*
+ MAIN
+ */
+package orientacaoaoobjeto;
+
+/**
+ 
+ */
+public class OrientacaoAoObjeto {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    
+    Baskara b = new Baskara();
+    
+    b.a = 10;
+    b.b = 6;
+    b.c = 10;
+    
+    b.solucao();
+    b.imprimir();
+    
+    
+        
+    
+    
+    }
+    
+}
+
+
+
+
+
+
+/*
+ Classe Baskara
+ */
+package orientacaoaoobjeto;
+
+/**
+ *
+ * @author Matheus
+ */
+public class Baskara {
+    
+    String saida;
+    int a;
+    int b;
+    int c;
+    int solucao;
+    int delta;
+    int raiz1;
+    int raiz2;
+    
+    public void solucao(){
+        
+        
+            
+        delta = (b*b) + (-4*a*c);
+        
+        
+            if(delta > 0){
+           
+               saida = "Existem duas raízes reais";
+               raiz1 = (int) ((-(b)+ (Math.sqrt(delta)))/(2*a));
+               raiz2 = (int) ((-(b)- (Math.sqrt(delta)))/(2*a)); 
+               
+           } 
+            if (delta == 0){
+               
+                saida = "Existe apenas uma raiz real";
+                raiz1 = (int) ((-(b)+ (Math.sqrt(delta)))/(2*a));
+            }
+            
+            if (delta < 0) {
+            
+                saida = "Não existem raizes reais";
+        }   
+    }
+    
+    public void imprimir(){
+    
+        System.out.println("Valor de A: "+a);
+        System.out.println("Valor de B: "+b);
+        System.out.println("Valor de C: "+c);
+        System.out.println("Delta: "+delta);
+        System.out.println(saida+": "+raiz1+" "+raiz2);
+    }
+    
+}
