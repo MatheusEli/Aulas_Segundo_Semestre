@@ -1,0 +1,105 @@
+/**
+ MAIN
+ */
+public class OrientacaoAoObjeto {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    
+    Livro li = new Livro();
+    LivrodeBilioteca lb = new LivrodeBilioteca();
+    
+    
+    lb.tipo = "Fantasia";
+    lb.idioma = "Portugues";
+    lb.nome = "As cronicas de Gelo e Fogo";
+    lb.numpaginas = 600;
+    
+    lb.apresentarLivroBiblioteca();
+    
+    
+        
+    
+    
+    }
+    
+}
+
+
+
+
+/*
+ Class Livro
+ */
+package orientacaoaoobjeto;
+
+/**
+ *
+ * @author Matheus
+ */
+public class Livro {
+ 
+    String nome;
+    String tipo;
+    String idioma;
+    int numpaginas;
+    
+    
+    
+    public void apresentarLivro(){
+    
+        System.out.println("Nome do livro: "+nome);
+        System.out.println("Tipo do livro: "+tipo);
+        System.out.println("Idioma do liro: "+idioma);
+        System.out.println("Número de páginas: "+numpaginas);
+    }
+    
+}
+
+
+
+
+/*
+Class LivrodeBilioteca
+ */
+package orientacaoaoobjeto;
+
+/**
+ *
+ * @author Matheus
+ */
+public class LivrodeBilioteca {
+    
+    String nome;
+    String tipo;
+    String idioma;
+    int numpaginas;
+    boolean emprestado;
+    
+    
+    
+    public boolean emprestado(boolean emprestado){
+    
+        if(nome == "As cronicas de Gelo e Fogo")
+            return false;
+        else
+            return true;
+    }
+    
+    
+    public void apresentarLivroBiblioteca(){
+    
+        System.out.println("Nome do livro: "+nome);
+        System.out.println("Tipo do livro: "+tipo);
+        System.out.println("Idioma do liro: "+idioma);
+        System.out.println("Número de páginas: "+numpaginas);
+        System.out.println("Esse livro pode ser emprestado? "+emprestado(emprestado));
+    }
+    
+    
+    
+    
+}
