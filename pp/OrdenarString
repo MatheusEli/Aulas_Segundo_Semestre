@@ -1,0 +1,46 @@
+package matrizesvouaprender;
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+
+/**
+ *
+ * @author Matheus
+ */
+public class LinguagemProgramacao {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        String vetnomes[]  = new String [10];
+        lerVetor(vetnomes);
+        ordenarNomes(vetnomes);
+        
+    }
+    static void lerVetor(String vetnomes[]){
+    
+        Scanner entrada = new Scanner(System.in);
+        for (int i = 0; i < vetnomes.length; i++) {
+            
+            System.out.println("Digite o "+(i+1)+"º nome: ");
+            vetnomes[i] = entrada.nextLine();
+        }
+        
+    }
+    
+    static void ordenarNomes(String vetnomes[]){
+    
+        System.out.println("Nomes Ordenados: ");
+        Arrays.sort(vetnomes);
+        
+        for(String nome: vetnomes){
+        
+            System.out.println(nome);
+        }
+    }
+    
+    
+}
