@@ -1,0 +1,138 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package teste;
+/**
+ *
+ * @author lab804
+ */
+public class Teste {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        Calculadora c = new Calculadora();
+        c.num1 = 10;
+        c.num2 = 0;
+        
+        c.divisaoNumeros();
+        c.somarNumeros();
+        c.subtrairNumeros();
+        c.multiplicarNumeros();
+        
+       c.imprimir();
+
+
+
+
+
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package teste;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author lab804
+ */
+public class Calculadora {
+ 
+    int num1;
+    int num2;
+    int soma;
+    int div;
+    int mult;
+    int sub;
+    
+
+    public void Calculadora(int num1, int num2){
+    
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    public void somarNumeros(){
+
+       int soma = num1 + num2;
+       this.soma = soma;
+        
+       
+
+    }
+
+
+    public void subtrairNumeros(){
+
+        int sub = num1 - num2;
+        this.sub = sub;
+
+       
+    }
+
+
+    public void multiplicarNumeros(){
+        
+        int mult = num1 * num2;
+        this.mult = mult;
+        
+
+    }
+    
+    public void divisaoNumeros(){
+    
+        Scanner entrada = new Scanner(System.in);
+        try{
+        int div = num1/num2;
+        this.div = div;
+        
+        }catch(Exception e){
+        
+            while(num2 == 0   ||   num2 < 0){
+            
+                System.out.println("Digite um número maior que zero para a divisão");
+                num2 = entrada.nextInt();
+            }
+            int div = num1/num2;
+            this.div = div;
+            
+        }
+        
+        
+        
+    }
+    public void imprimir(){
+        
+        
+        System.out.println("Soma: "+soma);
+        System.out.println("Divisão: "+div);
+        System.out.println("Sub: "+sub);
+        System.out.println("Multiplicação: "+mult);
+        
+    }
+    
+    
+
+}
