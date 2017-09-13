@@ -12,15 +12,21 @@ public class Atividade1 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String s = "(555))5555-5555";
+        String s = "(123)4567-8910";
         
         String vet1[] = s.split("\\)");
         
-        System.out.println(vet1[0]);
-        System.out.println(vet1[1]);
-        System.out.println(vet1[2]);
+         //Toda vez que o split separa ele armazena em um vetor!
         
-        //Toda vez que o split separa ele armazena em um vetor!
+        StringBuilder sb = new StringBuilder(vet1[0]);
+        sb.deleteCharAt(0);
+        
+        System.out.println(sb);
+        
+        String[] vet2 = vet1[1].split("-");
+        System.out.println(vet2[0]);
+        System.out.println(vet2[1]);
+        
     }
     
     
