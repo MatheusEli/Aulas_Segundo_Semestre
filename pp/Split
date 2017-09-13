@@ -1,0 +1,28 @@
+package atividade1;
+
+/**
+ *
+ * @author lab804
+ */
+public class Atividade1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        String s = "(555))5555-5555";
+        
+        String vet1[] = s.split("\\)");
+        
+        System.out.println(vet1[0]);
+        System.out.println(vet1[1]);
+        System.out.println(vet1[2]);
+        
+        //Toda vez que o split separa ele armazena em um vetor!
+    }
+    
+    
+    
+}
