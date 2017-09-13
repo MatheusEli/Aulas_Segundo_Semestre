@@ -1,0 +1,54 @@
+import java.util.Random;
+
+
+
+
+/**
+ *
+ * @author Matheus
+ */
+public class LinguagemProgramacao {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+       
+        Random random = new Random();
+        
+        int matrizA[][] = {{2,5,9},{3,6,8}};
+        int matrizB[][] = {{2,7},{4,3},{5,2}};
+        
+        int matrizC[][] = new int [2][2];
+        
+        for (int i = 0; i < matrizC.length; i++) {
+            
+            for (int j = 0; j < matrizC[i].length; j++) {
+                
+                for (int k = 0; k < 3; k++) {
+                    
+                
+                matrizC[i][j] += matrizA[i][k]*matrizB[k][j];
+                
+                }
+            }
+        }
+        
+        System.out.println("            ||           ");
+        
+        System.out.println("Matriz C: \n");
+        for (int i = 0; i < matrizC.length; i++) {
+            
+            for (int j = 0; j < matrizC[i].length; j++) {
+                
+                System.out.print(matrizC[i][j]+"  ");
+            }
+            System.out.println("\n");
+        }
+        
+        
+        
+             
+    }   
+}
