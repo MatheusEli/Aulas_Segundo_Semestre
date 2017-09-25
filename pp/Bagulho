@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package applivrolivraria;
 
 import java.util.Scanner;
@@ -13,43 +18,58 @@ public class AppLivroLivraria {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Scanner entrada = new Scanner(System.in);        
-        LivroLivraria livros[] = new LivroLivraria[5];
-        LivroLivraria livro;
+        Scanner entrada = new Scanner(System.in);
         
-        String titulo;
-        String genero;
-        String autor;
-        double preco;
-        int isbn;
+        int contRomance = 0, contPreco = 0;
         
-        for (int i = 0; i < livros.length; i++) {
-         
-            System.out.println("Digite o nome do "+(1+i)+"º livro:");
-            titulo = entrada.nextLine();
-            
-            System.out.println("Digite o genero do "+(1+i)+"º livro: ");
-            genero = entrada.nextLine();
-            
-            System.out.println("Digite o nome do autor do "+(1+i)+"º livro: ");
-            autor = entrada.nextLine();
-            
-            System.out.println("digite o preço do "+(1+i)+"º livro: ");
-            preco = entrada.nextDouble();
-            
-            System.out.println("Digite o isbn do "+(1+i)+"º livro: ");
-            isbn = entrada.nextInt();
-            
-            livro = new LivroLivraria(titulo, autor, genero, preco, isbn);
-            
-            livros[i] = livro;
-        }
+        LivroLivraria[] vetor = new LivroLivraria[5];
         
-        for (int i = 0; i < livros.length; i++) {
+        for (int i = 0; i < vetor.length; i++) {
             
+            vetor[i] = new LivroLivraria();
+            System.out.println("Digite o titulo do "+(1+i)+"º livro:  ");
+            vetor[i].setTítulo(entrada.nextLine());
+            System.out.println("Digite o autor do "+(1+i)+"º livro:  ");
+            vetor[i].setAutor(entrada.nextLine());
+            System.out.println("Digite o genero do "+(1+i)+"º livro:  ");
+            vetor[i].setGenero(entrada.nextLine());
+            System.out.println("Digite o preço do "+(1+i)+"º livro:  ");
+            vetor[i].setPreço(entrada.nextDouble());
+            
+            entrada.nextLine();
             
         }
         
+        for (LivroLivraria livro : vetor) {
+            
+            if (livro.getGenero().equalsIgnoreCase("romance")) {
+                
+                contRomance ++;
+            }
+        }
+        
+        System.out.println("Quantidade livros de romance: "+contRomance);
+        
+        
+        for (LivroLivraria livro : vetor) {
+            
+            if (livro.getPreço() >= 10   &&   livro.getPreço() <= 50) {
+                
+                contPreco ++;
+            }
+        }
+        
+        System.out.println("Quantidade livros de romance: "+contRomance);
+        System.out.println("Quantidade de livros com preco entre 10 e 50: "+contPreco);
+        
+        double total = 0;
+        
+        for (int i = 0; i < vetor.length; i++) {
+            
+            total = total + vetor[i].getPreço();
+        }
+        
+        System.out.println("Soma dos livros: "+total);
     }
     
 }
@@ -64,9 +84,11 @@ public class AppLivroLivraria {
 
 
 
-
-
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package applivrolivraria;
 
 /**
@@ -74,24 +96,51 @@ package applivrolivraria;
  * @author lab804
  */
 public class LivroLivraria {
-    
-    String titulo;
-    String genero;
-    String autor;
-    double preco;
-    int isbn;
- 
-    public LivroLivraria(String autor, String genero, String titulo, double preco, int isbn){
-    
-        this.titulo = titulo;
+    private String título;
+    private String autor;
+    private String genero;
+    private double preco;
+    private int isbn;
+
+    public String getTítulo() {
+        return título;
+    }
+
+    public void setTítulo(String título) {
+        this.título = título;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
         this.genero = genero;
-        this.preco = preco;
-        this.isbn = isbn;
-        
-        
+    }
+
+    public double getPreço() {
+        return preco;
+    }
+
+    public void setPreço(double preço) {
+        this.preco = preço;
     }
     
+    public void imprimir(){
     
+        System.out.println("Título = "+título);
+        System.out.println("Autor = "+autor);
+        System.out.println("Genero = "+genero);
+        System.out.println("ISBN = "+isbn);
+        System.out.println("Preço = "+preco);
+    }
     
 }
