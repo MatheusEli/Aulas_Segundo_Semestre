@@ -1,0 +1,144 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exceções;
+
+import java.util.Scanner;
+
+
+
+/**
+ *
+ * @author lab804
+ */
+public class Exceções {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner entrada = new Scanner (System.in);
+        String n;
+        System.out.println("Digite o nome do correntista: ");
+        n = entrada.nextLine();
+        
+        
+        ContBancaria c = new ContBancaria(0,n);
+        
+        int num;
+        
+        do{
+            
+            System.out.println("Digite qual opção deseja realizar: ");
+            System.out.println("1 - Depositar\n2 - Sacar\n3 - Consultar Saldo\n4 - Sair");
+            num = entrada.nextInt();
+        
+            switch(num){
+        
+            case 1:
+                System.out.println("Insira o valor que deseja depositar: ");
+                double valor = entrada.nextDouble();
+                c.depositar(valor);
+                break;
+                
+            case 2:
+                System.out.println("Digite o valor a sacar: ");
+                double saque = entrada.nextDouble();
+                try{
+                    c.sacar(saque);
+                }
+                catch(IllegalArgumentException ex) {
+                    System.out.println("main: " + ex);
+                }
+                break;
+                
+            case 3:
+                System.out.println("Saldo Atual: ");
+                c.saldoAtual();
+                break;
+                
+            case 4:
+                num = 0;
+                System.out.println("Encerrado!");
+                break;
+                
+            default:
+                System.out.println("Numero invalido!");
+        }
+        }while(num > 0  &&   num <= 3);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exceções;
+
+/**
+ *
+ * @author lab804
+ */
+public class ContBancaria {
+
+    double saldo;
+    String nome;
+
+    public ContBancaria(double saldo, String nome) {
+
+        this.saldo = saldo;
+        this.nome = nome;
+    }
+
+    public void depositar(double valor) {
+
+        saldo += valor;
+
+    }
+
+    public void sacar(double saque) {
+            if (saque < 0) {
+                throw new IllegalArgumentException("Saque negativo");
+            }
+            if (saldo >= saque) {
+                saldo = saldo - saque;
+            } else {
+                System.out.println("Saldo insuficiente");
+            }
+           
+    }
+
+    public void saldoAtual() {
+
+        System.out.println(saldo);
+    }
+
+}
