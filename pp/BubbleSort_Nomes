@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sobrecargadedados;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Matheus
+ */
+public class SobrecargaDeDados {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+     
+     
+     String vetornomes[] = new String[10];
+     lerNomes(vetornomes);
+     ordenarCrescente(vetornomes);
+     
+     
+        for (int i = 0; i < vetornomes.length; i++) {
+            
+            System.out.print(vetornomes[i]+" ");
+        }
+
+
+    }
+    
+    public static void lerNomes(String vetornomes[]){
+    
+        Scanner entrada = new Scanner(System.in);
+        
+        for (int i = 0; i < vetornomes.length; i++) {
+            
+            System.out.println("Digite o "+(1+i)+"º nome: ");
+            vetornomes[i] = entrada.nextLine();
+        }
+    }
+    
+    public static void ordenarCrescente(String vetornomes[]){
+    
+        String aux;
+        boolean controle;
+        
+        for (int i = 0; i < vetornomes.length; i++) {
+            controle = true;
+            for (int j = 0; j < (vetornomes.length - 1); j++) {
+                
+                if (vetornomes[j].charAt(0) >  vetornomes[j+1].charAt(0)) {
+                    
+                    aux = vetornomes[j];
+                    vetornomes[j] = vetornomes[j+1];
+                    vetornomes[j+1] = aux;
+                    
+                    controle = false;
+                }
+            }
+            
+            if (controle) {
+                
+                break;
+            }
+        }
+    }
+    
+}
