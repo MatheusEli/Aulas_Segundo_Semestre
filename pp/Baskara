@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package orientacaoobjeto2;
+
+/**
+ *
+ * @author Matheus
+ */
+public class OrientacaoObjeto2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+       Baskara b = new Baskara();
+       
+       b.a = 1;
+       b.b = -2;
+       b.c = -3;
+       
+       
+       b.calcularRaiz();
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package orientacaoobjeto2;
+
+/**
+ *
+ * @author Matheus
+ */
+public class Baskara {
+    
+    int a;
+    int b;
+    int c;
+    
+    
+    
+    public void calcularRaiz(){
+    
+        int delta = (b*b) -4*a*c;
+        
+        if (delta > 0) {
+         
+            System.out.println("Existem duas raízes reais!");
+            
+            double raiz1 = (-(b) + (Math.sqrt(delta)))/(2*a);
+            double raiz2 = (-(b) - (Math.sqrt(delta)))/(2*a);
+            
+            System.out.println("Raíz 1: "+raiz1+", Raíz 2: "+raiz2);
+            
+        }
+        
+        if (delta == 0) {
+            
+            System.out.println("Exite uma raíz real!");
+            
+            double raiz1 = (-b + (Math.sqrt(delta)))/(2*a);
+            double raiz2 = (-b - (Math.sqrt(delta)))/(2*a);
+            
+            
+            System.out.println("Raiz: "+raiz1);
+        }
+        
+        if (delta < 0) {
+            
+            System.out.println("NÃO EXISTE RAÍZ REAL!");
+        }
+    }
+    
+}
