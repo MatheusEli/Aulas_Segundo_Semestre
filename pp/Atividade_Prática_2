@@ -14,7 +14,11 @@ public class Atividade_Pratica_2 {
         
         
         WhatsApp w = new WhatsApp(974507933, 970363538);
-        w.texto = "jksdhsakjdhsd";
+        
+        w.texto += "\njksdhsakjdhsd";
+        System.out.println(w.imprimirConversa());
+        
+        w.texto += "\niiiiiiiiiiii";
         System.out.println(w.imprimirConversa());
         
         
