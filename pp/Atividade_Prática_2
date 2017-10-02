@@ -187,11 +187,7 @@ public class WhatsApp {
         return texto;
     }
     
-    private void textoWhatsApp(String texto){
-    
-        this.texto = texto;
-    }
-    
+   
     public String imprimirConversa(){
     
         return "Usuário: "+numusuario+"\nContato: "+numcontato+"\nTexto: "+texto;
