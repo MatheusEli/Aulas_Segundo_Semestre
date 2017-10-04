@@ -1,0 +1,108 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exercicios_aula7;
+
+import static java.lang.Math.random;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author lab804
+ */
+public class Exercicios_Aula7 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        atv2();
+    }
+    
+    public static void atv3()
+    {
+    }
+    
+    public static void atv2()
+    {
+        Random random = new Random();
+        int line, col, counter = 0;
+        
+        Scanner input = new Scanner(System.in);
+        System.out.print("Informe o numero de Linhas\n> ");
+        line = input.nextInt();
+        System.out.print("Informe o numero de Colunas\n> ");
+        col = input.nextInt();
+        
+        int matriz[][] = new int[col][line];
+        for (int i = 0; i < matriz.length; i++)
+            for (int j = 0; j < matriz[i].length; j++)
+                matriz[i][j] = random.nextInt(10);
+        
+        
+        System.out.print("Informe o numero\n> ");
+        int number = input.nextInt();
+        
+        for (int ano = 0; ano < matriz.length; ano++)
+        {
+            for (int mes = 0; mes < matriz[ano].length; mes++)
+                System.out.print(matriz[ano][mes]+"\t");
+            System.out.print("\n");
+        }      
+                
+        for (int i = 0; i < matriz.length; i++)         
+            for (int j = 0; j < matriz[i].length; j++)
+                if(matriz[i][j] == number)
+                    counter++;
+        
+        System.out.println("O numero ["+number+"] aparece: "+ counter);
+    }
+    
+    public static void atv1()
+    {
+        Random random = new Random();
+        double media[] = new double[12];
+        int matriz[][] = new int [10][12];
+        
+        for (int ano = 0; ano < matriz.length; ano++)
+            for (int mes = 0; mes < matriz[ano].length; mes++)
+                matriz[ano][mes] = random.nextInt(501);
+
+        for (int ano = 0; ano < matriz.length; ano++)
+        {
+            for (int mes = 0; mes < matriz[ano].length; mes++)
+                System.out.print(matriz[ano][mes]+"\t");
+            System.out.print("\n");
+        }      
+                
+        for (int mes = 0; mes < 12; mes++)
+        {
+            for (int ano = 0; ano < 10; ano++)
+                media[mes] += matriz[ano][mes];
+            
+            media[mes] /= 10;
+        }
+        
+        for (int i = 0; i < 10; i++)
+            System.out.println("Mes ["+i+"]: "+ media[i]);
+
+        int maior = 0;
+        int ano = 0, mes = 0;
+        
+        for (int i = 0; i < matriz.length; i++)         
+            for (int j = 0; j < matriz[i].length; j++)
+                if(matriz[i][j] >  maior){
+                
+                    maior = matriz[i][j];
+                    ano = i;
+                    mes = j;
+                    
+                }
+        
+        System.out.println("Maior valor: "+maior+" no mes "+(mes+1)+" do ano "+(1990+ano));
+    }
+    
+}
