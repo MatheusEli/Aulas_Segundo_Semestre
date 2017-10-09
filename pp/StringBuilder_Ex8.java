@@ -57,7 +57,7 @@ public class StringBuilder_Buffer_Tokenizer {
                QtdVogal++;
             }
             
-            if (s.charAt(i) != 'a'  &&   s.charAt(i) != 'e'  &&    s.charAt(i) != 'i'  &&     s.charAt(i) != 'o'  &&     s.charAt(i) != 'u') {
+            if (s.charAt(i) != 'a'  &&   s.charAt(i) != 'e'  &&    s.charAt(i) != 'i'  &&     s.charAt(i) != 'o'  &&     s.charAt(i) != 'u'  &&  s.charAt(i)   !=  ' ') {
                 
                 QtdCons ++;
             }
