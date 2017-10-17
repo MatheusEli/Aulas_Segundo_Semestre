@@ -1,0 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exercícios_aula7_pp;
+
+import java.util.Random;
+
+/**
+ *
+ * @author Matheus
+ */
+public class Exercícios_Aula7_PP {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Random random = new Random();
+        int matriz[][] = new int[10][12];
+        double vetormes[] = new double[12];
+        String vetornomes[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro",
+        "Novembro", "Dezembro"};
+        String vetornomesa[] = {"1990","1991","1992","1993","1994","1995","1996","1997","1998","1999"};
+        
+        for (int i = 0; i < matriz.length; i++) {
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                
+                matriz[i][j] = random.nextInt(101);
+                vetormes[j] += matriz[i][j];
+            }
+        }
+        
+        
+        System.out.println("Matriz: ");
+        for (int i = 0; i < matriz.length; i++) {
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                
+                System.out.print(matriz[i][j]+" ");
+            }
+            System.out.println("\n");
+        }
+        
+        
+        for (int i = 0; i < vetormes.length; i++) {
+            
+            System.out.println("O consumo médio do mes de "+vetornomes[i]+" é: "+vetormes[i]/10);
+        }
+        
+        
+        int maior = 0;
+        int ano=0,mes=0;
+        for (int i = 0; i < matriz.length; i++) {
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                
+                if (matriz[i][j] > maior) {
+                    
+                    maior = matriz[i][j];
+                    ano = i;
+                    mes = j;
+                }
+            }
+        }
+        
+        System.out.println("A data em que a empresa gastou mais energia foi: "+vetornomes[mes]+", "+vetornomesa[ano]);
+    }
+    
+}
