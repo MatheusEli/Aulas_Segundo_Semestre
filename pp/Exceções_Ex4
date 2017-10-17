@@ -1,0 +1,172 @@
+ 
+package exceções;
+
+import java.util.Scanner;
+
+public class Exceções {
+
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        Scanner string = new Scanner(System.in);
+        boolean control = true;
+        boolean control1 = false;
+        
+        
+        
+        System.out.println("Digite o nome do correntista: ");
+        String nome = string.nextLine();
+        
+        
+        ContaBancaria ca = new ContaBancaria(0,nome);
+        do{
+        System.out.println("********************");
+        System.out.println("1-Depositar\n2-Sacar\n3-Saldo Atual\n4-Sair");
+        System.out.println("********************");
+        int num = entrada.nextInt();
+        
+        
+        switch(num){
+        
+            
+            case 1:
+                System.out.println("Digite o valor a ser depositado: ");
+                
+                do{
+                    
+                    double valor = entrada.nextDouble();
+                try{
+                    ca.depositar(valor);
+                    control1 = false;
+                
+                }catch(IllegalArgumentException exc){
+                
+                    System.out.println(exc.getMessage());
+                    System.out.println("Digite o valor novamente: ");
+                    control1 = true;
+                    
+                }
+                }while(control1);
+                break;
+            case 2:
+                System.out.println("Digite o valor a sacar: ");
+                do{
+                
+                    
+                    double valor1  = entrada.nextDouble();
+                    
+                try{
+                    
+                    ca.sacar(valor1);
+                    control1 = false;
+                
+                    
+                }catch(IllegalArgumentException exc){
+                
+                    System.out.println(exc.getMessage());
+                    System.out.println("Digite o valor novamente: ");
+                    control1 = true;
+                }
+                
+                }while(control1);
+                break;
+            case 3:
+                System.out.println(ca.saldo());
+                break;
+            case 4:
+                System.out.println("Encerrado!");
+                control = false;
+                break;
+        }
+        }while(control);
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+package exceções;
+
+import java.util.Scanner;
+
+public class ContaBancaria {
+
+    private double saldo;
+    private String nome;
+
+    
+    public ContaBancaria(double saldo, String nome) {
+        this.saldo = saldo;
+        this.nome = nome;
+    }
+    
+    
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public void depositar(double valor) throws IllegalArgumentException{
+    
+        if (valor >= 0) {
+            
+            saldo = saldo + valor;
+        }else{
+        
+            throw new IllegalArgumentException("Valor digitado inválido!");
+        }
+    }
+    
+    public void sacar(double valor)throws IllegalArgumentException{
+    
+        if(saldo - valor >= 0){
+        saldo = saldo - valor;
+        }else{
+        
+            throw new IllegalArgumentException("Valor insuficiente para saque!");
+        }
+        
+    }
+
+    public String saldo(){
+    
+        return "Saldo atual: "+saldo;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
