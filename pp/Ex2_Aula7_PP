@@ -1,0 +1,101 @@
+
+package exercícios_aula7_pp;
+
+
+import java.util.Scanner;
+
+
+public class Exercícios_Aula7_PP {
+
+    public static void main(String[] args) {
+        
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Digite o número de linhas que a matriz terá: ");
+        int numLinhas = entrada.nextInt();
+        
+        System.out.println("Digite o número de colunas que a matriz terá: ");
+        int numColunas = entrada.nextInt();
+        
+        Matriz m = new Matriz(numLinhas,numColunas);
+        
+        System.out.println("Digite o número a pesquisar: ");
+        int num = entrada.nextInt();
+        
+        System.out.println(m.matriz(numLinhas, numColunas, num));
+    }
+    
+}
+
+
+
+
+
+package exercícios_aula7_pp;
+
+import java.util.Random;
+
+public class Matriz {
+    
+   
+    int numLinhas;
+    int numColunas;
+
+    public Matriz(int numLinhas, int numColunas) {
+        
+        this.numLinhas = numLinhas;
+        this.numColunas = numColunas;
+    }
+    
+    public String matriz(int numLinhas, int numColunas, int num){
+    
+        Random random = new Random();
+        
+        int qtdNum = 0;
+        
+        int matriz[][] = new int[numLinhas][numColunas];
+        
+        for (int i = 0; i < matriz.length; i++) {
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                
+                matriz[i][j] = random.nextInt(101);
+                if (matriz[i][j] == num) {
+                    
+                    qtdNum ++;
+                }
+            }
+        }
+        
+        System.out.println("Matriz: ");
+        
+        for (int i = 0; i < matriz.length; i++) {
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                
+                System.out.print(matriz[i][j]+" ");
+            }
+            System.out.println("\n");
+        }
+        
+        return "Número de vezes em que "+num+" aparece: "+qtdNum;
+    }
+    
+    public void matriz(int matriz[][]){
+    
+        System.out.println("Matriz: ");
+        for (int i = 0; i < matriz.length; i++) {
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                
+                System.out.print(matriz[i][j]+" ");
+                
+            }
+            System.out.println("\n");
+        }
+    }
+    
+    
+}
+
+
