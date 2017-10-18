@@ -1,0 +1,309 @@
+
+package exercicios_aula7;
+
+
+
+import javax.swing.JOptionPane;
+
+public class Exercicios_Aula7 {
+
+    
+    public static void main(String[] args) {
+        
+        MaquinaDeVendas mv = new MaquinaDeVendas();
+        mv.adicionarProduto(new Produto("Coca - cola",10,5));
+        mv.adicionarProduto(new Produto("agua",5,3.5));
+        mv.adicionarProduto(new Produto("chocolate",6,6));
+        
+        
+        int opcao,codigo;
+        
+        do{
+        
+        
+            opcao = Integer.parseInt(JOptionPane.showInputDialog("1-Inserir Códigos\n2-Comprar Produto\n3-Receber Troco"
+                    + "\n4-Sair\n5-Escolha uma opcao:"));
+            
+            switch (opcao){
+            
+                case 1:
+                    double credito = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor de Crédito:"));
+                    mv.setCredito(credito);
+                    break;
+                    
+                case 2:
+                    codigo = Integer.parseInt(JOptionPane.showInputDialog(mv.listarProduto()+"\nInforme o produto que deseja comprar:"));
+                    JOptionPane.showMessageDialog(null,mv.venderProduto(codigo));
+                    break;
+                    
+                case 3:
+                    if (mv.getCredito()>0) {
+                        
+                        JOptionPane.showMessageDialog(null,"Seu troco R$ "+mv.getCredito());
+                    }else{
+                    
+                        JOptionPane.showMessageDialog(null, "Você usou todos seus creditos!");
+                    }
+                    break;
+                    
+                case 4:
+                    JOptionPane.showMessageDialog(null,"Obrigada Volte Sempre!");
+                    System.exit(0);
+                    break;
+            }
+        
+        
+        }while(opcao>=1   &&   opcao<=4);
+    }
+    
+}
+
+
+
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exercicios_aula7;
+
+/**
+ *
+ * @author lab804
+ */
+public class Produto {
+    
+    private String nome;
+    private int qtd;
+    private double valor;
+
+    public Produto(String nome, int qtd, double valor) {
+        this.nome = nome;
+        this.qtd = qtd;
+        this.valor = valor;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+    
+    public void vendaProduto(double saldo)throws FaltaDeCreditoException,FaltaDeProdutoException{
+  
+        if (saldo - valor >= 0) {
+            
+            saldo = saldo - valor;
+            qtd = qtd - 1;
+        }
+        
+        if(saldo - valor < 0){
+        
+            throw new FaltaDeCreditoException(saldo, valor);
+        }
+        
+        if (qtd == 0) {
+            
+            throw new FaltaDeProdutoException(nome);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+package exercicios_aula7;
+
+public class FaltaDeCreditoException extends Exception {
+    
+    double saldoDoUsuario;
+    double valorDoProduto;
+
+    public FaltaDeCreditoException(double saldoDoUsuario, double valorDoProduto) {
+        this.saldoDoUsuario = saldoDoUsuario;
+        this.valorDoProduto = valorDoProduto;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Créditos insuficientes. Você possui R$ " + String.format("%.2f", saldoDoUsuario) + 
+                ", e o produto desejado custa R$ " + String.format("%.2f", valorDoProduto);
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exercicios_aula7;
+
+/**
+ *
+ * @author lab804
+ */
+public class FaltaDeProdutoException extends Exception {
+    
+    String nomeDoProduto;
+    
+    public FaltaDeProdutoException(String nomeDoProduto)
+    {
+        this.nomeDoProduto = nomeDoProduto;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "O produto " + nomeDoProduto + " acabou.";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package exercicios_aula7;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author lab804
+ */
+public class MaquinaDeVendas {
+    
+    Produto p ;
+    private ArrayList<Produto>listaProdutos = new ArrayList<>(); 
+    private double credito;
+
+    public MaquinaDeVendas() {
+        
+    }
+
+    public double getCredito() {
+        return credito;
+    }
+
+    public void setCredito(double credito) {
+        this.credito = credito;
+    }
+    
+    public void adicionarProduto(Produto produto){
+    
+        listaProdutos.add(produto);
+        
+    }
+    
+
+    public String listarProduto(){
+    
+        String saida = "";
+        if (listaProdutos.isEmpty()) {
+            
+            saida = "Nenhumm produto disponivel para venda";
+        }else{
+        
+            for(Produto p : listaProdutos){
+            
+                saida = saida + listaProdutos.indexOf(p) + " - " + p.getNome()+" - "+p.getQtd()+
+                        " - "+p.getValor()+"\n";
+            }
+        }
+        return saida;
+    }
+    
+        public String venderProduto(int indice){
+    
+            String saida = "";
+            
+            if (indice>=0  &&   indice<listaProdutos.size()) {
+                 
+                Produto p = listaProdutos.get(indice);
+                
+            
+            try{
+            
+                p.vendaProduto(credito);
+                setCredito(credito - p.getValor());
+                saida = "Venda realizada com sucesso!";
+            }catch(FaltaDeCreditoException |  FaltaDeProdutoException fex){
+            
+                saida = fex.getMessage();
+                
+            }
+            }else{
+            
+                saida = "Codigo de produto inválido!";
+            }
+        
+            return saida;
+    }
+
+    
+}
