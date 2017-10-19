@@ -1,0 +1,29 @@
+
+package revisão_lp;
+
+import java.util.Scanner;
+
+public class Revisão_LP {
+
+    
+    public static void main(String[] args) {
+        
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Digite o valor em segundos: ");
+        int segundos = entrada.nextInt();
+        
+        converterHoras(segundos);
+      }
+     
+    public static void converterHoras(int segundos){
+        
+        int minutos = segundos/60;
+        int horas = minutos/60;
+        int segundosrestantes = segundos%60;
+        int minutosrestantes = minutos%60;
+        
+        System.out.println(String.format("%02d:%02d:%02d", horas, minutosrestantes, segundosrestantes));
+       
+    }     
+    
+}
