@@ -1,0 +1,45 @@
+
+package revisão_lp;
+
+public class RoboSimples {
+    
+    private char direcao;
+
+    public RoboSimples(char direcao) {
+    
+        this.direcao = direcao;
+    }
+
+    public char getDirecao() {
+        return direcao;
+    }
+
+    
+    public void validacao(){
+    
+        switch(direcao){
+        
+            case 'n': case 'N':
+                this.direcao = 'N';
+                break;
+                
+            case 's': case 'S':
+                this.direcao = 'S';
+                break;
+                
+            case 'l': case 'L':
+                this.direcao = 'L';
+                break;
+                
+            case 'o': case 'O':
+                this.direcao = 'O';
+                break;
+                
+            default:
+                this.direcao = 'N';
+        }
+    }
+    
+    
+    
+}
