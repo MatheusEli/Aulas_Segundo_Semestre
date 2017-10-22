@@ -1,0 +1,72 @@
+
+package revisão_lp;
+
+public class Baskara {
+    
+    int a;
+    int b;
+    int c;
+    
+    
+    
+    public void imprimir(){
+    
+        int delta = ((b*b) - (4*a*c));
+        
+        if (delta > 0) {
+            
+            double x1 = (((-b)+ Math.sqrt(delta))/(2*a));
+            double x2 = (((-b)- Math.sqrt(delta))/(2*a));
+            
+            System.out.println("EXISTEM DUAS RAÍZES REAIS!\n"+x1+"  E  "+x2);
+            
+        }
+        
+        if (delta == 0) {
+            
+            double x1 = (((-b)+ Math.sqrt(delta))/(2*a));
+            System.out.println("EXISTE APENAS UMA RAÍZ REAL!\n"+x1);
+        }
+        
+        if (delta < 0) {
+            
+            System.out.println("NÃO POSSUI RAÍZ!");
+        }
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package revisão_lp;
+
+public class Revisão_LP {
+
+    
+    public static void main(String[] args) {
+       
+        Baskara b = new Baskara();
+        
+        b.a = 1;
+        b.b = 8;
+        b.c = 16;
+        
+        b.imprimir();
+    }
+}
