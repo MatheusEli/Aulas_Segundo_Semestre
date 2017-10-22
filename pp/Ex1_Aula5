@@ -1,0 +1,92 @@
+
+package revisão_lp;
+
+public class Time {
+    
+    private int hora;
+    private int minuto;
+    private int segundo;
+
+    public Time(int hora, int minuto, int segundo) {
+        if(hora >= 0 && hora < 24)
+            this.hora = hora; 
+        if(minuto >= 0 && minuto < 60) 
+            this.minuto = minuto; 
+        if(segundo >= 0 && segundo < 60) 
+            this.segundo = segundo;
+    }
+
+    public int getHora() {
+        return hora;
+    }
+
+    public void setHora(int hora) {
+        this.hora = hora;
+    }
+
+    public int getMinuto() {
+        return minuto;
+    }
+
+    public void setMinuto(int minuto) {
+        this.minuto = minuto;
+    }
+
+    public int getSegundo() {
+        return segundo;
+    }
+
+    public void setSegundo(int segundo) {
+        this.segundo = segundo;
+    }
+    
+   
+    
+    public String visualizarHoraUniversal(){
+    
+        return(String.format("%02d:%02d:%02d", hora, minuto, segundo));
+    }
+    
+    public String visualizarHoraAmPm(){
+    
+        if (hora >= 0     &&     hora < 12) {
+            
+            return(String.format("%02d:%02d:%02d", hora, minuto, segundo))+" AM";
+            
+        }
+        
+        if (hora >= 12    &&    hora < 24) {
+            
+            hora = hora - 12;
+            
+            return(String.format("%02d:%02d:%02d", hora, minuto, segundo))+" PM";
+        }else{
+        
+        return "DIGITOS INVÁLIDOS!";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+package revisão_lp;
+
+public class Revisão_LP {
+
+    
+    public static void main(String[] args) {
+       
+        Time t = new Time(22,30,0);
+        
+        System.out.println(t.visualizarHoraAmPm());
+    }
+}
