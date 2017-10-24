@@ -1,0 +1,317 @@
+
+package revisao_pp;
+
+
+import java.util.Scanner;
+
+public class Revisao_PP {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        
+        MaquinaDeVendas mv = new MaquinaDeVendas();
+        
+        mv.adicionarProduto(new Produto("coca-cola",20,5));
+        mv.adicionarProduto(new Produto("iogurte",30,2.5));
+        mv.adicionarProduto(new Produto("chocolate",100,3));
+      
+       boolean controle = false;
+       
+       do{
+            
+            System.out.println("===OPÇÕES===");
+            System.out.println("1 - Inserir Créditos\n2 - Comprar Produto\n3 - Receber troco\n4 - Sair");
+            int num = entrada.nextInt();
+            
+            switch(num){
+        
+            
+                case 1:
+                System.out.println("Informe o crédito: ");
+                double credito = entrada.nextDouble();
+                mv.setCredito(credito);
+                break;
+                
+            
+                case 2:
+                System.out.println("=PRODUTOS=");
+                System.out.println(mv.listarProduto());
+                System.out.println("Escolha o produto: ");
+                int indice = entrada.nextInt();
+                mv.venderProduto(indice);
+                break;
+                
+            
+                case 3:
+                    if (mv.getCredito()>0) {
+                        
+                        System.out.println("=TROCO=");
+                        System.out.println(mv.getCredito());
+                        mv.setCredito(0);
+                    }else{
+                    
+                        System.out.println("Você usou todos seus créditos!");
+                    }
+                break;
+                
+            
+                case 4:
+                System.out.println("====PROGRAMA ENCERRADO====");
+                controle = true;
+                break;
+        }
+        }while(controle == false);
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package revisao_pp;
+
+public class Produto {
+    
+    String nome;
+    int quantidade;
+    double valorProduto;
+
+    public Produto(String nome, int quantidade, double valorProduto) {
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.valorProduto = valorProduto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getValor() {
+        return valorProduto;
+    }
+
+    public void setValor(double valorProduto) {
+        
+        this.valorProduto = valorProduto;
+    }
+    
+    public void venda(double valor)throws FaltaDeProdutoException, FaltaDeCreditoException{
+    
+        if (valor < valorProduto) {
+            
+            throw new FaltaDeCreditoException(valor, valorProduto);
+        }else{
+        if (quantidade == 0) {
+            
+            throw new FaltaDeProdutoException(nome);
+        }else{
+        
+            quantidade = quantidade - 1;
+            
+        }
+        }
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package revisao_pp;
+
+import java.util.ArrayList;
+
+public class MaquinaDeVendas {
+
+    private static ArrayList<Produto>listaProdutos  = new ArrayList<>();
+    private double credito;
+
+    public MaquinaDeVendas() {
+    }
+   
+    public void setListaProdutos(ArrayList<Produto> listaProdutos) {
+        this.listaProdutos = listaProdutos;
+    }
+    
+    public static ArrayList<Produto> getListaProdutos() {
+        return listaProdutos;
+    }
+
+    public double getCredito() {
+        return credito;
+    }
+
+    public void setCredito(double credito) {
+        this.credito = credito;
+    }
+    
+    public void adicionarProduto(Produto produto){
+    
+        listaProdutos.add(produto);
+        
+    }
+    
+    public void venderProduto(int indice){
+    
+        try{
+        listaProdutos.get(indice).venda(credito);
+        
+        credito = credito - listaProdutos.get(indice).getValor();
+            System.out.println("====COMPRA EFETUADA====");
+        }catch(FaltaDeCreditoException excC){
+        
+            System.out.println("FALTA DE CRÉDITO!!");
+            
+        }catch(FaltaDeProdutoException excP){
+        
+            System.out.println("FALTA DE PRODUTO!!");
+        }
+        }
+    
+    public String listarProduto(){
+    
+        String saida = "";
+        if (listaProdutos.isEmpty()) {
+            saida = "Nenhum Produto cadastrado";
+        } else {
+            for (Produto p : listaProdutos) {
+                saida = saida + listaProdutos.indexOf(p) + " - " + p.getNome() + " - "
+                        + p.getQuantidade() + " - "
+                        + p.getValor()
+                        + "\n";
+            }
+        }
+        return saida;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+package appmaquinavendas;
+
+
+public class FaltaDeCreditoException extends Exception {
+    
+    double saldoDoUsuario;
+    double valorDoProduto;
+
+    public FaltaDeCreditoException(double saldoDoUsuario, double valorDoProduto) {
+        this.saldoDoUsuario = saldoDoUsuario;
+        this.valorDoProduto = valorDoProduto;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "Créditos insuficientes. Você possui R$ " + String.format("%.2f", saldoDoUsuario) + 
+                ", e o produto desejado custa R$ " + String.format("%.2f", valorDoProduto);
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package appmaquinavendas;
+
+
+public class FaltaDeProdutoException extends Exception {
+    
+    String nomeDoProduto;
+    
+    public FaltaDeProdutoException(String nomeDoProduto)
+    {
+        this.nomeDoProduto = nomeDoProduto;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "O produto " + nomeDoProduto + " acabou.";
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
