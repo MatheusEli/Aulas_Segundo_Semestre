@@ -1,0 +1,93 @@
+
+package revisao_pp_exercicios;
+
+import java.util.Scanner;
+
+public class Revisao_PP_Exercicios {
+
+    public static void main(String[] args) {
+       
+        Scanner entrada = new Scanner(System.in);
+        
+        Conversao c = new Conversao();
+        
+        
+        System.out.println("Digite os graus Farenheit a serem transformados em Celsius: ");
+        double Farenheit = entrada.nextDouble();
+        
+        c.setFarenheit(Farenheit);
+        
+        try{
+        
+            c.toCelsius();
+            System.out.println("Graus Celsius: "+c.toCelsius()+"º");
+        }catch(FarenheitException exc){
+        
+            System.out.println(exc);
+        }
+    }
+    
+}
+
+
+
+
+package revisao_pp_exercicios;
+
+public class Conversao {
+    
+    private double Farenheit;
+
+    public Conversao(double Farenheit) {
+        this.Farenheit = Farenheit;
+    }
+
+    public Conversao() {
+    }
+
+    public double getFarenheit() {
+        return Farenheit;
+    }
+
+    public void setFarenheit(double Farenheit) {
+        this.Farenheit = Farenheit;
+    }
+    
+    public double toCelsius()throws FarenheitException{
+    
+        double celsius = 0;
+        
+        if (Farenheit < -459.67) {
+            
+            throw new FarenheitException(Farenheit);
+        }else{
+        
+            celsius = ((5*(Farenheit - 32))/9);
+        }
+        
+        return celsius;
+    }
+    
+}
+
+
+
+
+
+package revisao_pp_exercicios;
+
+public class FarenheitException extends Exception {
+
+    
+    double Farenheit;
+
+    public FarenheitException(double Farenheit) {
+        this.Farenheit = Farenheit;
+    }
+    
+    @Override
+    public String toString(){
+    
+        return "O valor a ser convertido tem que ser maior que zero absoluto!";
+    }
+}
