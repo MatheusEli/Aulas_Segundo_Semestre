@@ -1,0 +1,137 @@
+
+package revisao_pp_exercicios;
+
+public class ContaBancaria {
+    
+    private double saldo;
+    private String nome;
+
+    public ContaBancaria(double saldo, String nome) {
+        this.saldo = saldo;
+        this.nome = nome;
+    }
+
+    public ContaBancaria() {
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public void depositar(double valor)throws IllegalArgumentException{
+    
+        if (valor < 0) {
+            
+            throw new IllegalArgumentException();
+        }else{
+        
+            saldo = saldo + valor;
+        }
+    }
+    
+    public void sacar(double valor)throws IllegalArgumentException{
+    
+        if (valor < 0) {
+            
+            throw new IllegalArgumentException();
+        }else{
+        
+            if (valor > saldo) {
+                
+                System.out.println("Valor de saque maior que o Saldo!");
+            }else{
+            
+                saldo = saldo - valor;
+            }
+        }
+    }
+    
+    public String saldo(){
+    
+        return nome+", seu saldo é : "+saldo+"R$";
+    }
+}
+
+
+
+
+
+
+package revisao_pp_exercicios;
+
+import java.util.Scanner;
+
+public class Revisao_PP_Exercicios {
+
+    public static void main(String[] args) {
+       
+        Scanner entrada = new Scanner(System.in);
+        
+        ContaBancaria c = new ContaBancaria();
+        c.setSaldo(0);
+        
+        System.out.println("Digite o nome do correntista: ");
+        String nome = entrada.nextLine();
+        
+        c.setNome(nome);
+        
+        boolean controle = false;
+        
+        do{
+        System.out.println("======OPÇÕES=======");
+        System.out.println("1 - Depositar\n2 - Sacar\n3 - Saldo\n4 - Sair");
+        System.out.println(nome+", qual opção deseja?");
+        int numero = entrada.nextInt();
+        
+            switch(numero){
+            
+                case 1:
+                    System.out.println("Digite o valor a depositar: ");
+                    double valor = entrada.nextDouble();
+                    try{
+                    c.depositar(valor);
+                    }catch(IllegalArgumentException exc){
+                    
+                        System.out.println("Impossivel depositar valor negativo!");
+                    }
+                    break;
+                    
+                case 2:
+                    System.out.println("Digite o quanto quer sacar: ");
+                    double valorsaque = entrada.nextDouble();
+                    
+                    try{
+                        c.sacar(valorsaque);
+                    }catch(IllegalArgumentException exc){
+                    
+                        System.out.println("Impossivel saue negativo!!");
+                    }
+                    break;
+                    
+                case 3:
+                    System.out.println(c.saldo());
+                    break;
+                    
+                case 4:
+                    System.out.println("======PROGRAMA ENCERRADO======");
+                    controle = true;
+                    break;
+            }
+        
+        }while(controle == false);
+    }
+    
+}
+
