@@ -1,0 +1,79 @@
+
+package revisao_pp_exercicios;
+
+import java.util.Scanner;
+
+public class Revisao_PP_Exercicios {
+
+    public static void main(String[] args) {
+       
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Digite a primeira String: ");
+        String str1 = entrada.nextLine();
+        
+        System.out.println("Digite a segunda String: ");
+        String str2 = entrada.nextLine();
+        
+        LerString l = new LerString();
+        
+        l.str1 = str1;
+        l.str2 = str2;
+        
+        try{
+        
+            l.compareTo();
+            System.out.println(l.compareTo());
+        
+        }catch(NullPointerException exc){
+        
+            System.out.println("Há Strings Nulas!");
+            
+        }
+    }
+    
+}
+
+
+
+
+
+
+package revisao_pp_exercicios;
+
+public class LerString {
+    
+    String str1;
+    String str2;
+
+    public LerString(String str1, String str2) {
+        this.str1 = str1;
+        this.str2 = str2;
+    }
+
+    public LerString() {
+    }
+    
+    public String compareTo() throws NullPointerException{
+    
+        
+        if (str1.equalsIgnoreCase("")   ||    str2.equalsIgnoreCase("")) {
+            
+            throw new NullPointerException();
+        }
+        
+        if (str1.compareTo(str2) > 0) {
+            
+            return str1+" é lexicograficamente maior que "+str2;
+            
+        }
+        
+        if (str1.compareTo(str2) < 0) {
+            
+            return str1+" é lexicograficamente menor que "+str2;
+        }else{
+        
+            return str1+" é lexicograficamente igual a "+str2;
+        }
+    }
+}
