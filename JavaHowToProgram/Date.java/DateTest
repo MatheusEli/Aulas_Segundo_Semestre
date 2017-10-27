@@ -1,0 +1,13 @@
+
+package javahowtoprogram;
+
+public class DateTest {
+
+    public static void main(String[] args) {
+        
+        Date da = new Date(18,8,1999);
+        
+        System.out.println(da.displayDate());
+    }
+    
+}
