@@ -1,0 +1,41 @@
+
+package javahowtoprogram;
+
+public class Employee {
+    
+    private String nome;
+    private String sobrenome;
+    private double salariomensal;
+
+    public Employee(String nome, String sobrenome, double salariomensal) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.salariomensal = salariomensal;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public double getSalariomensal() {
+        return salariomensal;
+    }
+
+    public void setSalariomensal(double salariomensal) {
+        this.salariomensal = salariomensal;
+    }
+    
+    
+}
