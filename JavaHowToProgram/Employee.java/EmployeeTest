@@ -1,0 +1,21 @@
+
+package javahowtoprogram;
+
+public class EmplyeeTest {
+
+    public static void main(String[] args) {
+    
+        Employee em1 = new Employee("Matheus Eli","Ferreira", 600.30);
+        Employee em2 = new Employee("Carla Patricia","Ferreira",1500.00);
+        
+        System.out.println("Salario anual "+em1.getNome()+": "+em1.getSalariomensal());
+        System.out.println("Salario anual "+em2.getNome()+": "+em2.getSalariomensal());
+        
+        em1.setSalariomensal(em1.getSalariomensal() + ((em1.getSalariomensal()*10)/100));
+        em2.setSalariomensal(em2.getSalariomensal() + ((em2.getSalariomensal()*10)/100));
+        
+        System.out.println("Salario anual "+em1.getNome()+": "+em1.getSalariomensal());
+        System.out.println("Salario anual "+em2.getNome()+": "+em2.getSalariomensal());
+    }
+    
+}
