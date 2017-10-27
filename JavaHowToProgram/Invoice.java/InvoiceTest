@@ -1,0 +1,13 @@
+
+package javahowtoprogram;
+
+public class InvoiceTest {
+
+    public static void main(String[] args) {
+        
+        Invoice fatura = new Invoice("656253","Xbox One",4,1449.99);
+        
+        System.out.println("Valor: "+fatura.getInvoiceAmount());
+    }
+    
+}
