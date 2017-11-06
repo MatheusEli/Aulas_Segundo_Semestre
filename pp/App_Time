@@ -1,56 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package apptime;
 
-/**
- *
- * @author Matheus
- */
+package apptime;
 public class AppTime {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         Time t = new Time(14, 80, 0);
-        
         System.out.println(t.mostrarHora());
-        
     }
-    
-}
+ }
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package apptime;
 
-/**
- *
- * @author Matheus
- */
 public class Time {
     
     private int hora;
@@ -106,8 +71,6 @@ public class Time {
         }
     
     }
-
-    
     public int getHora() {
         
         
