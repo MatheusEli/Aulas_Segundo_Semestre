@@ -1,0 +1,22 @@
+
+package appfuncionario;
+
+import java.util.Scanner;
+
+public class AppFuncionario {
+
+    public static void main(String[] args) {
+        
+        Scanner entrada = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in);
+        
+        Funcionario func = new Funcionario("José da Silva",500,5.50);
+        Funcionario funcs = new FuncionarioSenior("João Ferreira",500,5.50);
+        
+        System.out.println("====DADOS FUNCIONARIO====");
+        System.out.println(func.imprimir()+" - Salario: "+func.retornaSalario());
+        System.out.println("====DADOS FUNCIONARIO SÊNIOR====");
+        System.out.println(funcs);
+    }
+    
+}
