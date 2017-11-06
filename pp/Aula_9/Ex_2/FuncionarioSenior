@@ -1,0 +1,26 @@
+
+package appfuncionario;
+
+public class FuncionarioSenior extends Funcionario {
+
+    public FuncionarioSenior() {
+        super();
+    }
+    
+    public FuncionarioSenior(String nome, int horastrabalhadas, double valorhorastrabalhadas) {
+        
+        super(nome,horastrabalhadas,valorhorastrabalhadas);
+    }
+    
+    public double calcularSalario(){
+    
+        int bonus = super.getHorastrabalhadas()/10;
+        return super.retornaSalario()*bonus;
+    }
+    
+    @Override
+    public String toString(){
+    
+        return "Nome: "+super.getNome()+" - Horas Trabalhadas: "+super.getHorastrabalhadas()+" - Valor/Hora: "+super.getValorhorastrabalhadas()+", salario: "+calcularSalario();
+    }
+}
