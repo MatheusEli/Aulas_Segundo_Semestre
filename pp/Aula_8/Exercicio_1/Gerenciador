@@ -1,1 +1,45 @@
 
+package aula_8;
+
+import java.util.ArrayList;
+
+public class Gerenciador {
+    
+    private static ArrayList<Animal>listaAnimais = new ArrayList<>();
+
+    public static ArrayList<Animal> getListaAnimais() {
+        return listaAnimais;
+    }
+    
+    static void adicionar(Animal animal){
+    
+        listaAnimais.add(animal);
+    }
+    
+    static String listar(){
+    
+        String saida = "";
+        
+        for (Animal animais : listaAnimais) {
+            
+            saida += animais.imprimir()+"\n";
+        }
+        
+        return saida;
+    }
+    
+    static String nomeProprietarios(String raca){
+    
+        String saida = "";
+        for (Animal animais : listaAnimais) {
+            
+            if (animais.getRaca().equalsIgnoreCase(raca)) {
+                
+                saida += animais.getProprietario().getNome()+"\n";
+            }
+        }
+        
+        return saida;
+    }
+}
+
