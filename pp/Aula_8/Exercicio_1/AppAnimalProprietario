@@ -1,0 +1,70 @@
+
+package aula_8;
+
+import java.util.Scanner;
+
+public class AppAnimalProprietario {
+    
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in);
+       
+        Animal a;
+        
+        Proprietario pr = new Proprietario();
+        
+        
+        boolean controle = false;
+        
+        do{
+        System.out.println("====OPÇÕES====");
+        System.out.println("1-Cadastrar animal e proprietario\n2-Listar todos os animais cadastrados\n"
+                + "3-Listar proprietarios de animais com a raça desejada\n4-Sair");
+        int opcao = entrada.nextInt();
+        
+        switch(opcao){
+        
+            case 1:
+                
+                a = new Animal();
+                System.out.println("=======CADASTRAMENTO=====");
+                System.out.println("*DADOS ANIMAL*");
+                System.out.println("Digite o nome do Animal: ");
+                a.setNome(ler.nextLine());
+                System.out.println("Digite a raça do Animal: ");
+                a.setRaca(ler.nextLine());
+                System.out.println("Digite a cor do Animal: ");
+                a.setCor(ler.nextLine());
+                System.out.println("Digite o ano de nascimento do Animal: ");
+                a.setAnonascimento(ler.nextLine());
+                System.out.println("*DADOS PROPRIETARIO*");
+                System.out.println("Digite o nome do Proprietario: ");
+                pr.setNome(ler.nextLine());
+                System.out.println("Digite o telefone do Proprietario: ");
+                pr.setTelefone(ler.nextLine());
+                
+                a.setProprietario(pr);
+                Gerenciador.adicionar(a);
+                break;
+                
+            case 2:
+                System.out.println(Gerenciador.listar());
+                break;
+                
+            case 3:
+                System.out.println("Digite a Raça a pesquisar: ");
+                String raca = ler.nextLine();
+                System.out.println("Lista dos proprietarios dos cachorros com esta raça: "
+                        +"\n"+Gerenciador.nomeProprietarios(raca));
+                break;
+                
+            case 4:
+                controle = true;
+                break;
+                
+        }
+    
+        }while(controle == false);
+}
+}
