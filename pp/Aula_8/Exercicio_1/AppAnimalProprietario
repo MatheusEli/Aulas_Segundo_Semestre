@@ -28,6 +28,8 @@ public class AppAnimalProprietario {
             case 1:
                 
                 a = new Animal();
+                
+                
                 System.out.println("=======CADASTRAMENTO=====");
                 System.out.println("*DADOS ANIMAL*");
                 System.out.println("Digite o nome do Animal: ");
@@ -40,11 +42,10 @@ public class AppAnimalProprietario {
                 a.setAnonascimento(ler.nextLine());
                 System.out.println("*DADOS PROPRIETARIO*");
                 System.out.println("Digite o nome do Proprietario: ");
-                pr.setNome(ler.nextLine());
+                a.getProprietario().setNome(ler.nextLine());
                 System.out.println("Digite o telefone do Proprietario: ");
-                pr.setTelefone(ler.nextLine());
+                a.getProprietario().setTelefone(ler.nextLine());
                 
-                a.setProprietario(pr);
                 Gerenciador.adicionar(a);
                 break;
                 
@@ -60,6 +61,7 @@ public class AppAnimalProprietario {
                 break;
                 
             case 4:
+                System.out.println("=====PROGRAMA ENCERRADO===");
                 controle = true;
                 break;
                 
