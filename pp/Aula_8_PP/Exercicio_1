@@ -1,0 +1,92 @@
+
+package aula_8_pp;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Aula_8_PP {
+
+    public static void main(String[] args) throws IOException{
+       
+        Scanner entrada = new Scanner(System.in);
+        Scanner ler = new Scanner(System.in);
+        String nome, rg, endereco;
+        int idade;
+        
+        System.out.println("Digite o nome: ");
+        nome = entrada.nextLine();
+        
+        System.out.println("Digite o endereço: ");
+        endereco = entrada.nextLine();
+        
+        System.out.println("Digite o RG: ");
+        rg = entrada.nextLine();
+        
+        System.out.println("Digite a Idade: ");
+        idade = ler.nextInt();
+        
+        
+        //Binario
+        try {
+            FileOutputStream gravadorBinario =
+                    new FileOutputStream("Binario.txt");
+            
+            BufferedOutputStream bufferBinario = new BufferedOutputStream(gravadorBinario);
+            bufferBinario.write(nome.getBytes());
+            bufferBinario.write(rg.getBytes());
+            bufferBinario.write(endereco.getBytes());
+            bufferBinario.write(idade);
+            bufferBinario.flush();
+            //Modo errado: 
+            /*for (int i = 0; i < nome.length(); i++) {
+             
+                 gravadorBinario.write(nome.charAt(i));
+            }
+            
+            for (int i = 0; i < endereco.length(); i++) {
+             
+                 gravadorBinario.write(endereco.charAt(i));
+            }
+            
+            for (int i = 0; i < rg.length(); i++) {
+             
+                 gravadorBinario.write(rg.charAt(i));
+            }*/
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Aula_8_PP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        //TEXTO
+        try {
+            FileWriter gravadorTexto =
+                    new FileWriter("Texto.txt");
+            
+            BufferedWriter bufferText = new BufferedWriter(gravadorTexto);
+            bufferText.write(nome);
+            bufferText.write(rg);
+            bufferText.write(endereco);
+            bufferText.write(idade);
+            bufferText.flush();
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Aula_8_PP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+}
+
+
+    
+
