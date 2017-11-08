@@ -1,0 +1,36 @@
+package aula_8_pp;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Numeros {
+
+    public static void main(String[] args) throws IOException{
+        
+        try {
+            
+            FileReader arquivoTexto =
+                    new FileReader("numeros.txt");
+            
+            BufferedReader leitor = new BufferedReader(arquivoTexto);
+            int numero, soma = 0;
+            String s;
+            
+            while((s = leitor.readLine())!= null){
+        
+                numero = Integer.parseInt(s);
+                soma += numero;
+            }
+            
+            System.out.println("SOMA: "+soma);
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Numeros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+}
