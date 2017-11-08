@@ -1,0 +1,37 @@
+package aula_8_pp;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Exercicio_3 {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        
+        
+        try(
+                FileReader leitor = new FileReader("Fonte.txt");
+                FileWriter escritor = new FileWriter("Destino.txt");){
+        
+                    BufferedReader bufferLeitor = new BufferedReader(leitor);
+                    BufferedWriter bufferEscrita= new BufferedWriter(escritor);
+                    
+                    String leitura;
+                    
+                    while((leitura = bufferLeitor.readLine()) != null){
+                    
+                        bufferEscrita.write(leitura);
+                        bufferEscrita.newLine();
+                    }
+            
+                    bufferEscrita.flush();
+        }catch(IOException exc){
+            
+            System.out.println(exc);
+        }
+    }
+    
+}
+    
