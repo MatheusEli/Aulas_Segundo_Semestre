@@ -1,0 +1,33 @@
+public class FuncionarioSenior_Ex2 extends Funcionario_Ex2{
+
+    private int bonus;
+    
+    public FuncionarioSenior_Ex2() {
+    
+        super();
+    }
+    
+    public FuncionarioSenior_Ex2(int bonus, String nome, int horastrab, double valorhora) {
+        super(nome, horastrab, valorhora);
+        this.bonus = bonus;
+    }
+    
+    
+    @Override
+    public double calcularSalario(){
+    
+        double salariofinalSenior = super.calcularSalario();
+        int horastrabP = (super.getHorastrab()/10);
+        double bonusP = ((super.calcularSalario()*bonus)/100);
+        
+        salariofinalSenior += bonusP*horastrabP;
+        
+        return salariofinalSenior;
+    }
+    
+    @Override
+    public String imprimir(){
+        
+        return super.imprimir()+"Bonus a cada 10 horas: "+bonus+"%";
+    }
+}
