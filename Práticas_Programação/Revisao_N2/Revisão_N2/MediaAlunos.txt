@@ -1,0 +1,4 @@
+Nome do Aluno: Matheus Eli - Média: 9.6
+Nome do Aluno: Thiago Almeida - Média: 6.725
+Nome do Aluno: Lucas Azevedo - Média: 6.449999999999999
+Nome do Aluno: Gabriel HD - Média: 8.125
