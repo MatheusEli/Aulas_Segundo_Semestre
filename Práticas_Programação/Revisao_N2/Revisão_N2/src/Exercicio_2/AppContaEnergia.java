@@ -7,7 +7,16 @@ package Exercicio_2;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -26,6 +35,7 @@ public class AppContaEnergia extends javax.swing.JFrame {
         URL url = this.getClass().getResource("Sem título.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(imagemTitulo);
+        
     }
 
     /**
@@ -60,6 +70,17 @@ public class AppContaEnergia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mais Energia BRASIL");
         setBackground(java.awt.Color.gray);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setText("Dgite o número da conta:");
 
@@ -204,14 +225,51 @@ public class AppContaEnergia extends javax.swing.JFrame {
         ce.setQtdKW(Integer.parseInt(KilowattC.getText()));
         
         GerenciarContasEnergia.adicionarContaEnergia(ce);
-        
         ListaContas.append(ce.imprimir()+"\n");
+        
+        
+        try {
+            FileWriter fw = new FileWriter("ContasArmazenadas.txt");
+            fw.write(ListaContas.getText()+"\r\n");
+            fw.flush();
+        } catch (IOException ex) {
+            Logger.getLogger(AppContaEnergia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BotaoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoPesquisaActionPerformed
       
         ContaPesquisada.setText((GerenciarContasEnergia.buscarConta(PesquisaNumeroC.getText())).imprimir());
     }//GEN-LAST:event_BotaoPesquisaActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        String line, saida = "";
+        try {
+            BufferedReader fr = new BufferedReader(new FileReader("ContasArmazenadas.txt"));
+            
+            while((line = fr.readLine()) != null){
+            
+                saida += line+"\n";
+            }
+         } catch (FileNotFoundException ex) {
+            System.out.println("Erro: "+ex);
+        } catch (IOException ex) {
+            System.out.println("Erro: "+ex);
+        }
+        
+        ListaContas.setText(saida);
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
