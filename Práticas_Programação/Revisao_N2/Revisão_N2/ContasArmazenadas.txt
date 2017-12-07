@@ -1,6 +1,1 @@
 ﻿
-Cliente: UAM - Endereço: Avenida Bela Vista 1200 - TOTAL A PAGAR: 36000.0
-Cliente: TEMS - Endereço: Rua dos Italianos 812 - TOTAL A PAGAR: 15000.0
-
-Cliente: kjdhfdkjfshd - Endereço: khdsfdskjfh 768 - TOTAL A PAGAR: 123409.5
-
