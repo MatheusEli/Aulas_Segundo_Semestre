@@ -1,3 +1,2 @@
-﻿
-Cliente: UAM - Endereço: Avenida Bela Vista 1200 - TOTAL A PAGAR: 18750.0
-Cliente: TEMS - Endereço: Rua dos Italianos 812 - TOTAL A PAGAR: 15000.0
+
+Cliente: Telbaldo - Endereço: Acre - TOTAL A PAGAR: 185184.0
